@@ -36,9 +36,6 @@ const Main = ({ navigation }) => {
     setList(newArr);
   };
 
-  const addUser = () => {
-  };
-
   return (
     <SafeAreaView style={styles.container}>
       <FlatList data={list} renderItem={({item}) => 
@@ -51,7 +48,7 @@ const Main = ({ navigation }) => {
         )
       }/>
       <View>
-        <Button onPress={() => navigation.push('Add' )} title='add'/>
+        <Button onPress={() => navigation.push('Add')} title='add'/>
       </View>
     </SafeAreaView>
   );
