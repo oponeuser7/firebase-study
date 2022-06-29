@@ -1,18 +1,33 @@
 import React from 'react';
-import { useRef } from 'react';
+import { useState } from 'react';
 import { StyleSheet, View, Text, TextInput, Button } from 'react-native';
+import { firestore } from './firebase';
+import { collection, addDoc } from 'firebase/firestore';
 
 const Add = ({ navigation }) => {
+
+  const [name, onChangeName] = useState('');
   
+  const addUser = () => {
+    addDoc(collection(firestore, 'user'), {
+      name: name
+    }).then(() => {
+      navigation.goBack();
+    });
+  };
+
   return (
     <View style={styles.container}>
-      <TextInput style={styles.input} placeholder='name'></TextInput>
-      <Button onPress={() => console.log('add')} title='add'/>
+      <TextInput 
+        style={styles.input}
+        placeholder='name'
+        onChangeText={onChangeName}
+      >
+      </TextInput>
+      <Button onPress={addUser} title='add'/>
     </View>
   );
 };
-
-export default Add;
 
 const styles = StyleSheet.create({
   container: {
@@ -29,3 +44,5 @@ const styles = StyleSheet.create({
     width: 200,
   },
 });
+
+export default Add;
