@@ -1,6 +1,7 @@
 //firebase.js
 import { initializeApp } from "firebase/app"
 import { getFirestore } from 'firebase/firestore';
+import { getAnalytics } from 'firebase/analytics';
 
 const firebaseConfig = {
   // firebase 설정과 관련된 개인 정보
@@ -18,7 +19,8 @@ initializeApp(firebaseConfig);
 
 // firebase의 firestore 인스턴스를 변수에 저장
 const firestore = getFirestore();
+const analytics = getAnalytics();
 
 // 필요한 곳에서 사용할 수 있도록 내보내기
 // 다른 곳에서 불러올때 firestore로 불러와야 함!!
-export { firestore };
+export { firestore, analytics };

@@ -43,6 +43,9 @@ const Main = ({ navigation }) => {
           <View style={styles.node}>
             <Text style={{display:'none'}}>{item[1]}</Text>
             <Text>{item[0]}</Text>
+            <Button onPress={() => navigation.push('Modify', {
+              id: item[1]
+            })} title='modify'/>
             <Button onPress={() => deleteUser(item[1])} title='delete'/>
           </View>
         )
